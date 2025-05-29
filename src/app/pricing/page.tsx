@@ -44,8 +44,12 @@ export default function PricingPage() {
 
   function handleSignup(plan: string) {
     if (user) {
-      setMessage('You are already signed up!');
-      setTimeout(() => setMessage(''), 2000);
+      if (plan === 'pro') {
+        router.push('/checkout');
+      } else {
+        setMessage('You are already signed up!');
+        setTimeout(() => setMessage(''), 2000);
+      }
     } else {
       router.push('/signup');
     }
